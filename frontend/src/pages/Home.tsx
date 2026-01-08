@@ -10,6 +10,7 @@ import {
   Cloud,
   Settings,
   LogOut,
+  Video,
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { getWardrobeInsights, getOutfitStats } from '../api';
@@ -33,11 +34,11 @@ const Home: React.FC = () => {
 
   const quickActions = [
     {
-      icon: Camera,
-      label: 'Log Outfit',
-      description: 'Record what you wore today',
-      to: '/log',
-      color: 'bg-primary-500',
+      icon: Video,
+      label: 'Video Insights',
+      description: 'Extract value from any video',
+      to: '/video-insights',
+      color: 'bg-gradient-to-br from-purple-500 to-pink-500',
     },
     {
       icon: Sparkles,
@@ -54,11 +55,11 @@ const Home: React.FC = () => {
       color: 'bg-emerald-500',
     },
     {
-      icon: MapPin,
-      label: 'Locations',
-      description: 'Manage saved places',
-      to: '/locations',
-      color: 'bg-amber-500',
+      icon: Camera,
+      label: 'Log Outfit',
+      description: 'Record what you wore today',
+      to: '/log',
+      color: 'bg-primary-500',
     },
   ];
 

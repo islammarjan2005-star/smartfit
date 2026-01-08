@@ -9,6 +9,7 @@ import {
   Sparkles,
   BarChart3,
   LogOut,
+  Video,
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -17,9 +18,9 @@ const Layout: React.FC = () => {
 
   const navItems = [
     { to: '/', icon: Home, label: 'Home' },
+    { to: '/video-insights', icon: Video, label: 'Video' },
     { to: '/wardrobe', icon: Shirt, label: 'Wardrobe' },
     { to: '/outfits', icon: Layers, label: 'Outfits' },
-    { to: '/log', icon: Camera, label: 'Log' },
     { to: '/suggestions', icon: Sparkles, label: 'For You' },
   ];
 

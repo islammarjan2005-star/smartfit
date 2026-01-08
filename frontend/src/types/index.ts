@@ -101,3 +101,45 @@ export interface WardrobeInsights {
   never_worn: ClothingItem[];
   suggestions: string[];
 }
+
+// Video Insights Types
+export interface VideoInsightResponse {
+  summary: string;
+  steps: string[];
+  core_insight: string;
+  content_inspiration: string;
+  hooks: string[];
+  source_url?: string;
+  source_platform?: string;
+  title?: string;
+  creator_mode_enabled: boolean;
+  hook_analysis?: string;
+  pacing_analysis?: string;
+  format_analysis?: string;
+  remix_ideas?: string;
+  transcript?: string;
+  processing_time?: number;
+}
+
+export interface SavedVideoInsight {
+  id: number;
+  source_url?: string;
+  source_platform?: string;
+  title?: string;
+  summary: string;
+  steps: string[];
+  core_insight: string;
+  content_inspiration: string;
+  hooks: string[];
+  creator_mode_enabled: boolean;
+  hook_analysis?: string;
+  pacing_analysis?: string;
+  format_analysis?: string;
+  remix_ideas?: string;
+  created_at: string;
+}
+
+export interface SavedInsightsList {
+  items: SavedVideoInsight[];
+  total: number;
+}

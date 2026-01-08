@@ -11,6 +11,7 @@ import LogOutfit from './pages/LogOutfit';
 import Locations from './pages/Locations';
 import Suggestions from './pages/Suggestions';
 import Analytics from './pages/Analytics';
+import VideoInsights from './pages/VideoInsights';
 
 const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user, loading } = useAuth();
@@ -48,6 +49,7 @@ const App: React.FC = () => {
         <Route path="locations" element={<Locations />} />
         <Route path="suggestions" element={<Suggestions />} />
         <Route path="analytics" element={<Analytics />} />
+        <Route path="video-insights" element={<VideoInsights />} />
       </Route>
     </Routes>
   );
