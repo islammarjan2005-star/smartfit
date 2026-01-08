@@ -2,6 +2,7 @@ from app.models.user import User
 from app.models.clothing import ClothingItem, ClothingCategory, ClothingColor
 from app.models.outfit import Outfit, OutfitItem
 from app.models.outfit_log import OutfitLog, Location
+from app.models.video_insight import SavedVideoInsight
 
 __all__ = [
     "User",
@@ -12,4 +13,5 @@ __all__ = [
     "OutfitItem",
     "OutfitLog",
     "Location",
+    "SavedVideoInsight",
 ]

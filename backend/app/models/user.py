@@ -19,3 +19,4 @@ class User(Base):
     outfits = relationship("Outfit", back_populates="owner")
     outfit_logs = relationship("OutfitLog", back_populates="user")
     locations = relationship("Location", back_populates="user")
+    saved_insights = relationship("SavedVideoInsight", back_populates="owner")

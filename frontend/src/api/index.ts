@@ -156,4 +156,41 @@ export const getNewCombinations = () => api.get('/suggestions/new-combinations')
 export const getWeatherSuggestions = (weather: string) =>
   api.get(`/suggestions/weather/${weather}`);
 
+// Video Insights
+export const analyzeVideoUrl = (url: string, creatorMode: boolean = false) =>
+  api.post('/video-insights/analyze-url', { url, creator_mode: creatorMode }, { timeout: 180000 });
+
+export const analyzeVideoUpload = (file: File, creatorMode: boolean = false) => {
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('creator_mode', creatorMode.toString());
+  return api.post('/video-insights/analyze-upload', formData, { timeout: 180000 });
+};
+
+export const saveVideoInsight = (data: {
+  source_url?: string;
+  source_platform?: string;
+  title?: string;
+  summary: string;
+  steps: string[];
+  core_insight: string;
+  content_inspiration: string;
+  hooks: string[];
+  creator_mode_enabled?: boolean;
+  hook_analysis?: string;
+  pacing_analysis?: string;
+  format_analysis?: string;
+  remix_ideas?: string;
+  transcript?: string;
+}) => api.post('/video-insights/save', data);
+
+export const getSavedInsights = (skip?: number, limit?: number) =>
+  api.get('/video-insights/saved', { params: { skip, limit } });
+
+export const getSavedInsight = (id: number) =>
+  api.get(`/video-insights/saved/${id}`);
+
+export const deleteSavedInsight = (id: number) =>
+  api.delete(`/video-insights/saved/${id}`);
+
 export default api;

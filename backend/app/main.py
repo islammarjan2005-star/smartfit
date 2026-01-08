@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.config import settings
 from app.database import engine, Base
-from app.routers import auth, clothing, outfits, outfit_logs, locations, suggestions
+from app.routers import auth, clothing, outfits, outfit_logs, locations, suggestions, video_insights
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -35,6 +35,7 @@ app.include_router(outfits.router, prefix="/api")
 app.include_router(outfit_logs.router, prefix="/api")
 app.include_router(locations.router, prefix="/api")
 app.include_router(suggestions.router, prefix="/api")
+app.include_router(video_insights.router, prefix="/api")
 
 
 @app.get("/")
@@ -50,6 +51,7 @@ async def root():
             "🤖 AI-powered outfit suggestions based on occasion",
             "📊 Analytics on outfit frequency and wardrobe usage",
             "🛍️ Suggestions for new purchases based on wardrobe gaps",
+            "🎬 Video Insights: Extract value from TikTok, Reels & Shorts",
         ],
     }
 
