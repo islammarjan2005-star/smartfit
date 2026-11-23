@@ -2,6 +2,24 @@
 
 A calm, immersive Islamic content app. Vanilla JavaScript modules and CSS; no build step, dependencies, account, or backend required.
 
+## What’s new in 1.1 — Today, prayer times, Qibla, tasbih, share images, offline
+
+Noor now opens on **Today**, a home built around the day of a Muslim:
+
+- **Hijri date** (Umm al-Qura calendar, English and Arabic) with sacred-season notes: Ramadan and its last ten nights, the first ten of Dhul-Hijjah, ʿArafah, both ʿEids, ʿAshura, and the White Days. On Fridays, a Jumuʿah note with a one-tap link to Surah al-Kahf.
+- **Prayer times calculated on the device** (`dist/prayer.js`). Nothing is sent to a server. Ten calculation methods (MWL, ISNA, Egypt, Umm al-Qura, Karachi, Gulf, Dubai, Diyanet, MUIS, 18°), standard or Ḥanafī Asr, a high-latitude adjustment for UK and Nordic summers, and device, 12-hour or 24-hour clocks. Location comes from GPS or from 36 preset cities, and the default is picked from the device time zone.
+- **A live next-prayer countdown** and a **sun-path chart** of the day that shows each prayer and where the sun (or moon) is now. The hero photograph follows the time of day: night stars, dawn, daylight, afternoon or dusk.
+- **Verse of the day** from a curated list of self-contained ayahs, with a link to read it in context.
+- **Tasbīḥ counter** for the after-prayer dhikr (33 · 33 · 34), with a bead ring, haptics, and daily and lifetime totals.
+- **Qibla compass**: bearing, compass point and distance to the Kaʿbah. Where the device has a compass (with iOS permission), the live mode turns the dial and lights up when you face the Qibla.
+- **Your rhythm**: a gentle streak and seven-day view built from reading history and dhikr.
+
+**Share as image** (`dist/share-image.js`): any passage, in the feed or the verse of the day, becomes a 4:5 post, 9:16 story or square image. Each image has the photograph, Arabic, translation, reference, translator and the photographer’s credit. It is made on a canvas on the device and can be shared with the Web Share API or downloaded.
+
+**Installable and offline** (`dist/sw.js`, `dist/manifest.webmanifest`, `dist/offline.js`): a service worker precaches the interface. It also caches every verse batch, photograph and recitation once it has been viewed or heard (bounded), so Noor keeps working without a connection. An “Install Noor” button appears when the browser supports installing, and you are told when a new version is ready.
+
+Verification: `npm run check` and `npm test` (51 tests, including prayer times checked against published London solar times, Umm al-Qura Isha, ordering and Ḥanafī Asr in all 36 cities, Glasgow midsummer, rolling over to the next day, Qibla bearings for London and New York, Hijri conversion and regional defaults). Browser review covered desktop and 390 px phone in light and dark modes, tasbih progression, all three share formats, city and method changes, and service-worker registration.
+
 ## Run locally
 
 From this directory:

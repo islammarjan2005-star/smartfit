@@ -7,6 +7,9 @@ import { reciters, getReciter, recitationURL } from './recitation.js';
 import { PersonalLibrary } from './personal-library.js';
 import { renderPersonalLibrary, personalPost } from './personal-ui.js';
 import { scrollReadingKey } from './reading-keyboard.js';
+import { TodayView } from './today.js';
+import { renderShareImage, canvasBlob, SHARE_FORMATS } from './share-image.js';
+import { registerOffline, promptInstall } from './offline.js';
 const posts = [...starterPosts, ...extraHadith];
 const quran = new QuranLibrary();
 const curatedById = new Map(posts.map(p => [p.id, p]));
@@ -32,7 +35,7 @@ const storedNotes = readStore('notes', {});
 const storedRead = readStore('read', {});
 const personal=new PersonalLibrary({read:readStore,write:writeStore,legacyRead:storedRead,legacyResume:readStore('last-read',null)});
 const state = {
-  view: 'feed', category: 'all', mood: null, collection: null, surah: null, active: 0, libraryTab: 'saved', personalCollection:null, libraryLimit:60, focus: false, libraryError: false,
+  view: 'today', category: 'all', mood: null, collection: null, surah: null, active: 0, libraryTab: 'saved', personalCollection:null, libraryLimit:60, focus: false, libraryError: false,
   saved: Array.isArray(saved) ? saved : [], liked: Array.isArray(liked) ? liked : [],
   notes: storedNotes && typeof storedNotes === 'object' && !Array.isArray(storedNotes) ? storedNotes : {},
   read: storedRead && typeof storedRead === 'object' && !Array.isArray(storedRead) ? storedRead : {},
@@ -59,6 +62,8 @@ const reader=new SurahReader({library:quran,audio,preferences:()=>state.preferen
   onMarkRead:post=>{if(!post)return;personalChange(()=>personal.record(post.id,'reader'));const items=todayReads();if(!items.includes(post.id)){state.read[today()]=[...items,post.id];writeStore('read',state.read);}},
 });
 
+const todayView=new TodayView({quran,read:readStore,write:writeStore,icon,escape,toast:(...a)=>toast(...a),personal,getRead:()=>state.read,openReader:(...a)=>openReader(...a)});
+let shareState={id:null,format:'post',blob:null,url:null};
 let toastAction=null;
 function toast(message,actionLabel,action) {
   toastAction=action||null;
@@ -77,6 +82,7 @@ function applyPreferences() {
   document.body.classList.toggle('hide-transliteration', !state.preferences.transliteration);
   document.body.classList.toggle('reader-open',state.view==='reader');
   document.body.classList.toggle('feed-open',state.view==='feed');
+  document.body.classList.toggle('today-open',state.view==='today');
   document.body.classList.toggle('focus-mode', state.focus);
   audio.playbackRate = Number(state.preferences.speed) || 1;
   $('meta[name="theme-color"]').content = state.preferences.dark ? '#101516' : '#f0f0e9';
@@ -113,10 +119,10 @@ function navButton(view, label, glyph, category) {
   return `<button class="nav-button ${active ? 'active' : ''}" data-action="navigate" data-view="${view}" ${category ? `data-category="${category}"` : ''} ${active ? 'aria-current="page"' : ''}>${icon(glyph)}<span class="nav-label">${label}</span>${view === 'library' && state.saved.length ? `<span class="library-count">${state.saved.length}</span>` : ''}</button>`;
 }
 function sidebar() {
-  return `<aside class="sidebar"><button class="brand" data-action="navigate" data-view="feed" aria-label="Noor home"><span class="brand-word">noor</span><span class="brand-arabic" lang="ar" dir="rtl">نور</span></button><nav class="nav" aria-label="Main navigation">${navButton('feed', 'Your feed', 'home')}${navButton('explore', 'Explore', 'compass')}${navButton('library', 'Library', 'bookmark')}</nav><div class="nav-heading">Library</div><nav class="nav content-nav" aria-label="Content library">${navButton('feed', 'Qur’an', 'book', 'quran')}${navButton('feed', 'Du’a', 'hands', 'dua')}${navButton('feed', 'Hadith', 'hadith', 'hadith')}${navButton('feed', 'Stories', 'stories', 'story')}</nav><div class="sidebar-bottom"><button class="nav-button" data-action="reflections">${icon('pen')}<span class="nav-label">Reflections</span></button><button class="nav-button" data-action="settings">${icon('settings')}<span class="nav-label">Preferences</span></button><button class="sidebar-footer" data-action="about">About Noor ${icon('external')}</button></div></aside>`;
+  return `<aside class="sidebar"><button class="brand" data-action="navigate" data-view="today" aria-label="Noor home"><span class="brand-word">noor</span><span class="brand-arabic" lang="ar" dir="rtl">نور</span></button><nav class="nav" aria-label="Main navigation">${navButton('today', 'Today', 'sunrise')}${navButton('feed', 'Your feed', 'home')}${navButton('explore', 'Explore', 'compass')}${navButton('library', 'Library', 'bookmark')}</nav><div class="nav-heading">Library</div><nav class="nav content-nav" aria-label="Content library">${navButton('feed', 'Qur’an', 'book', 'quran')}${navButton('feed', 'Du’a', 'hands', 'dua')}${navButton('feed', 'Hadith', 'hadith', 'hadith')}${navButton('feed', 'Stories', 'stories', 'story')}</nav><div class="sidebar-bottom"><button class="nav-button" data-action="reflections">${icon('pen')}<span class="nav-label">Reflections</span></button><button class="nav-button install-button" data-action="install">${icon('download')}<span class="nav-label">Install Noor</span></button><button class="nav-button" data-action="settings">${icon('settings')}<span class="nav-label">Preferences</span></button><button class="sidebar-footer" data-action="about">About Noor ${icon('external')}</button></div></aside>`;
 }
 function topbar() {
-  return `<header class="topbar"><button class="mobile-brand" data-action="navigate" data-view="feed" aria-label="Noor home">noor</button><span class="workspace-title">${state.view === 'reader' ? 'The Qur’an' : state.view === 'explore' ? 'Explore the library' : state.view === 'library' ? 'Your personal library' : 'A space for remembrance'}</span><div class="topbar-actions"><button class="search-trigger" data-action="search" aria-label="Search Noor">${icon('search')}<span>Search the library</span><kbd>⌘ K</kbd></button><button class="icon-button theme-toggle" data-action="theme" aria-label="Switch to ${state.preferences.dark ? 'Daylight' : 'Nightfall'} theme" title="${state.preferences.dark ? 'Daylight: light interface' : 'Nightfall: dark interface'}">${icon(state.preferences.dark ? 'sun' : 'moon')}</button><button class="icon-button" data-action="settings" aria-label="Reading preferences">${icon('settings')}</button></div></header>`;
+  return `<header class="topbar"><button class="mobile-brand" data-action="navigate" data-view="today" aria-label="Noor home">noor</button><span class="workspace-title">${state.view === 'reader' ? 'The Qur’an' : state.view === 'explore' ? 'Explore the library' : state.view === 'today' ? 'Today, in remembrance' : state.view === 'library' ? 'Your personal library' : 'A space for remembrance'}</span><div class="topbar-actions"><button class="search-trigger" data-action="search" aria-label="Search Noor">${icon('search')}<span>Search the library</span><kbd>⌘ K</kbd></button><button class="icon-button theme-toggle" data-action="theme" aria-label="Switch to ${state.preferences.dark ? 'Daylight' : 'Nightfall'} theme" title="${state.preferences.dark ? 'Daylight: light interface' : 'Nightfall: dark interface'}">${icon(state.preferences.dark ? 'sun' : 'moon')}</button><button class="icon-button" data-action="settings" aria-label="Reading preferences">${icon('settings')}</button></div></header>`;
 }
 function dailyProgress() {
   const count = todayReads().length, goal = Number(state.preferences.goal);
@@ -162,10 +168,10 @@ function exploreView() {
 function libraryView() {return renderPersonalLibrary({state,personal,findPost,legacyResume:readStore('last-read',null)});}
 
 function mobileNav() {
-  return `<nav class="mobile-nav" aria-label="Mobile navigation">${[['feed', 'home', 'For you'], ['explore', 'compass', 'Explore'], ['quran', 'book', 'Qur’an'], ['library', 'bookmark', 'Library'], ['settings', 'settings', 'My space']].map(([view, glyph, label]) => `<button class="${view === state.view && (view !== 'feed' || state.category === 'all') || view === 'quran' && (state.view === 'reader' || state.view === 'feed' && state.category === 'quran') ? 'active' : ''}" data-action="${view === 'settings' ? 'settings' : view === 'quran' ? 'surahs' : 'navigate'}" data-view="${view}" data-id="quran">${icon(glyph)}${label}</button>`).join('')}</nav>`;
+  return `<nav class="mobile-nav" aria-label="Mobile navigation">${[['today', 'sunrise', 'Today'], ['feed', 'home', 'For you'], ['quran', 'book', 'Qur’an'], ['explore', 'compass', 'Explore'], ['library', 'bookmark', 'Library']].map(([view, glyph, label]) => `<button class="${view === state.view && (view !== 'feed' || state.category === 'all') || view === 'quran' && (state.view === 'reader' || state.view === 'feed' && state.category === 'quran') ? 'active' : ''}" data-action="${view === 'settings' ? 'settings' : view === 'quran' ? 'surahs' : 'navigate'}" data-view="${view}" data-id="quran">${icon(glyph)}${label}</button>`).join('')}</nav>`;
 }
 function renderApp(targetId, preserve = false) {
-  reader.unmount();audioId=null;
+  reader.unmount();todayView.unmount();audioId=null;
   observer?.disconnect(); clearTimeout(readTimer); clearTimeout(scrollTimer); pauseAudio(); navigationTarget = null;
   renderGeneration++;
   if (state.view!=='reader'&&(!preserve || !currentPosts.length)) {
@@ -173,10 +179,11 @@ function renderApp(targetId, preserve = false) {
     state.active = targetId ? Math.max(0, currentPosts.indexOf(targetId)) : 0;
   }
   feedWindow = new FeedWindow(currentPosts, state.active);
-  $('#app').innerHTML = `<div class="app-shell">${sidebar()}<div class="workspace">${topbar()}<div class="page-layout"><main class="main-column" id="main">${state.view === 'reader' ? reader.shell() : state.view === 'feed' ? feedView() : state.view === 'explore' ? exploreView() : libraryView()}</main>${rightSidebar()}</div></div>${mobileNav()}</div>${state.focus ? `<button class="focus-exit" data-action="focus">${icon('close')} Exit focus</button>` : ''}`;
+  $('#app').innerHTML = `<div class="app-shell">${sidebar()}<div class="workspace">${topbar()}<div class="page-layout"><main class="main-column" id="main">${state.view === 'reader' ? reader.shell() : state.view === 'feed' ? feedView() : state.view === 'explore' ? exploreView() : state.view === 'today' ? todayView.render() : libraryView()}</main>${rightSidebar()}</div></div>${mobileNav()}</div>${state.focus ? `<button class="focus-exit" data-action="focus">${icon('close')} Exit focus</button>` : ''}`;
   applyPreferences();
   if (state.view === 'feed' && currentPosts.length) requestAnimationFrame(() => setupFeed());
   if(state.view==='library')requestAnimationFrame(hydratePersonalView);
+  if(state.view==='today')todayView.mount($('#main'));
   if(state.view==='reader'){const generation=renderGeneration;requestAnimationFrame(()=>{if(generation===renderGeneration&&state.view==='reader')reader.mount($('#main'),readerTarget.surah,readerTarget.ayah);});}
 }
 function setupFeed() {
@@ -413,8 +420,40 @@ function intentionDialog() {
 }
 function shareDialog(post) {
   if (!post) return;
-  showDialog('Share this passage', `<p class="dialog-description">A meaningful reminder can make someone’s day.</p><div class="share-quote">“${escape(post.text)}”<small>${post.type === 'story' ? 'An editorial reflection on ' : ''}${post.reference} · ${post.verse}${post.excerpt ? ' · Excerpt' : ''}</small></div><div class="dialog-actions"><button class="primary-button" data-action="copy-quote" data-id="${post.id}">Copy reminder ${icon('check')}</button><button class="secondary-button" data-action="copy-link" data-id="${post.id}">${icon('share')} Copy source link</button></div><p class="privacy-note">Shares include the original source, so the reminder can be read in context.</p>`);
+  showDialog('Share this passage', `<p class="dialog-description">A meaningful reminder can make someone’s day.</p><div class="share-quote">“${escape(post.text)}”<small>${post.type === 'story' ? 'An editorial reflection on ' : ''}${post.reference} · ${post.verse}${post.excerpt ? ' · Excerpt' : ''}</small></div><div class="dialog-actions"><button class="primary-button" data-action="share-image" data-id="${post.id}">${icon('image')} Create an image</button><button class="secondary-button" data-action="copy-quote" data-id="${post.id}">Copy reminder ${icon('check')}</button><button class="secondary-button" data-action="copy-link" data-id="${post.id}">${icon('share')} Copy source link</button></div><p class="privacy-note">Shares include the original source, so the reminder can be read in context.</p>`);
 }
+async function shareImageDialog(post){
+  if(!post||post.pending)return;
+  if(shareState.id!==post.id)shareState.format='post';
+  shareState.id=post.id;
+  const formats=Object.entries(SHARE_FORMATS).map(([id,f])=>`<button role="radio" aria-checked="${shareState.format===id}" class="${shareState.format===id?'on':''}" data-action="share-format" data-format="${id}">${f.label}</button>`).join('');
+  showDialog('Share as an image',`<div class="share-image-stage format-${shareState.format}"><div class="share-image-loading" role="status">${icon('image')} Composing…</div></div><div class="today-seg share-formats" role="radiogroup" aria-label="Image shape">${formats}</div><div class="dialog-actions"><button class="primary-button" data-action="share-native" disabled>${icon('share')} Share</button><button class="secondary-button" data-action="share-download" disabled>${icon('download')} Save image</button></div><p class="privacy-note">Made on your device. The source reference and photographer credit are included on the image.</p>`);
+  const format=shareState.format,id=post.id;
+  try{
+    const canvas=await renderShareImage(post,{photo:photoFor(post),format});
+    if(shareState.id!==id||shareState.format!==format||!dialog.open)return;
+    shareState.blob=await canvasBlob(canvas);
+    if(shareState.url)URL.revokeObjectURL(shareState.url);
+    shareState.url=URL.createObjectURL(shareState.blob);
+    const stage=$('.share-image-stage');if(!stage)return;
+    stage.innerHTML=`<img src="${shareState.url}" alt="Preview: ${escape(post.reference)} ${escape(post.verse)} as a shareable image"/>`;
+    for(const b of $$('[data-action="share-native"],[data-action="share-download"]',dialog))b.disabled=false;
+    const file=new File([shareState.blob],'noor.jpg',{type:'image/jpeg'});
+    if(!(navigator.canShare&&navigator.canShare({files:[file]}))){const native=$('[data-action="share-native"]',dialog);if(native)native.hidden=true;}
+  }catch{const stage=$('.share-image-stage');if(stage)stage.innerHTML='<p class="share-image-loading">This image couldn’t be composed. Try copying the text instead.</p>';}
+}
+function shareFileName(){const post=findPost(shareState.id);return `noor-${String(post?.verse||'reminder').replace(/[^a-z0-9]+/gi,'-')}-${shareState.format}.jpg`;}
+function downloadShareImage(){
+  if(!shareState.url)return;
+  const link=document.createElement('a');link.href=shareState.url;link.download=shareFileName();
+  document.body.append(link);link.click();link.parentNode.removeChild(link);toast('Image saved.');
+}
+async function nativeShareImage(){
+  if(!shareState.blob)return;const post=findPost(shareState.id);
+  const file=new File([shareState.blob],shareFileName(),{type:'image/jpeg'});
+  try{await navigator.share({files:[file],title:`${post.reference} · ${post.verse}`,text:post.source||''});}catch(error){if(error?.name!=='AbortError')downloadShareImage();}
+}
+
 async function copyText(text) {
   try { await navigator.clipboard.writeText(text); toast('Copied with the source reference.'); }
   catch { showDialog('Your reminder, ready to share', `<p class="dialog-description">Copy the text below to share it.</p><textarea class="reflection-input" id="copy-fallback" readonly>${escape(text)}</textarea>`); $('#copy-fallback').select(); }
@@ -545,6 +584,20 @@ document.addEventListener('click', async event => {
     case 'share': shareDialog(post); break;
     case 'copy-quote': await copyText(`${post.arabic ? post.arabic + '\n\n' : ''}“${post.text}”\n\n${post.type === 'story' ? 'Editorial reflection on ' : ''}${post.reference} · ${post.verse}${post.excerpt ? ' (excerpt)' : ''}\n${post.translator || post.narrator || ''}\n${post.source}\n\nShared with Noor`); break;
     case 'copy-link': await copyText(post.source); break;
+    case 'share-image': await shareImageDialog(post); break;
+    case 'share-format': shareState.format=button.dataset.format; await shareImageDialog(findPost(shareState.id)); break;
+    case 'share-download': downloadShareImage(); break;
+    case 'share-native': await nativeShareImage(); break;
+    case 'today-location': showDialog('Your prayer times', todayView.locationBody()); break;
+    case 'today-gps': button.disabled=true;button.textContent='Finding you…';if(await todayView.locate()){closeDialog();toast(`Prayer times set for ${todayView.place().name}.`);renderApp();}else button.disabled=false;break;
+    case 'today-asr': todayView.settings.asr=id;todayView.saveSettings();showDialog('Your prayer times', todayView.locationBody());todayView.refreshHero();break;
+    case 'today-clock': todayView.settings.hour12=id==='null'?null:id==='true';todayView.saveSettings();showDialog('Your prayer times', todayView.locationBody());todayView.refreshHero();break;
+    case 'today-kahf': await openReader(18,1); break;
+    case 'today-read': {const ref=canonicalVerse(post);if(ref){const [s,a]=ref.split(':').map(Number);await openReader(s,a);}break;}
+    case 'tasbih-tap': todayView.tap(); break;
+    case 'tasbih-reset': todayView.resetTasbih(); toast('Tasbīḥ reset.'); break;
+    case 'qibla-live': await todayView.startCompass(); break;
+    case 'install': if(!await promptInstall())toast('Use your browser’s “Add to Home Screen” to install Noor.'); break;
     case 'focus': toggleFocus(); break;
     case 'settings': settingsDialog(); break;
     case 'theme': setAppearance(state.preferences.dark ? 'editorial' : 'immersive'); break;
@@ -579,7 +632,7 @@ document.addEventListener('input', event => {
   if(event.target.id==='surah-search')renderSurahs(event.target.value);
   if (event.target.matches('.audio-slider') && Number(event.target.closest('.feed-slide').dataset.index)===state.active && audioId === event.target.dataset.id && Number.isFinite(audio.duration)) audio.currentTime = Number(event.target.value) / 100 * audio.duration;
 });
-document.addEventListener('change', async event => { if(event.target.id==='audio-reciter'){state.preferences.reciter=event.target.value;savePreferences();audioId=null;if(state.view==='reader'){await reader.session.changeReciter();reader.render();reader.observeReading();}else {const current=activePost();if(current?.audio){audio.src=audioSource(current);audio.load();audioId=current.id;}$$('.reciter').forEach(el=>{const post=findPost(el.closest('.feed-slide').dataset.id);el.textContent=`${getReciter(state.preferences.reciter).name}${post?.excerpt?' · Full ayah':''}`;});}} if (event.target.id === 'audio-speed') { state.preferences.speed = Number(event.target.value); savePreferences(); } });
+document.addEventListener('change', async event => { if(event.target.id==='today-city'){todayView.setCity(event.target.value);showDialog('Your prayer times', todayView.locationBody());todayView.refreshHero();todayView.refreshCard('.today-qibla',todayView.qiblaCard());return;} if(event.target.id==='today-method'){todayView.settings.method=event.target.value;todayView.saveSettings();todayView.refreshHero();return;} if(event.target.id==='audio-reciter'){state.preferences.reciter=event.target.value;savePreferences();audioId=null;if(state.view==='reader'){await reader.session.changeReciter();reader.render();reader.observeReading();}else {const current=activePost();if(current?.audio){audio.src=audioSource(current);audio.load();audioId=current.id;}$$('.reciter').forEach(el=>{const post=findPost(el.closest('.feed-slide').dataset.id);el.textContent=`${getReciter(state.preferences.reciter).name}${post?.excerpt?' · Full ayah':''}`;});}} if (event.target.id === 'audio-speed') { state.preferences.speed = Number(event.target.value); savePreferences(); } });
 document.addEventListener('pointerdown', event => {
   if(dialog.open || event.target.closest('button,a,input,textarea,select,[contenteditable="true"]'))return;
   const surface=event.target.closest('.flowing-verse .slide-body');
@@ -633,6 +686,7 @@ async function initializeLibrary(retry=false){
 applyPreferences();
 renderApp();
 initializeLibrary();
+registerOffline({toast:(...a)=>toast(...a)});
 document.fonts.ready.then(fitCards);
 
 let positionTimer;

@@ -1,0 +1,22 @@
+{
+  "name": "Noor — A little light in your scroll",
+  "short_name": "Noor",
+  "description": "Prayer times, Qibla, tasbih and the complete Qur’an with recitation — a calm space for remembrance.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f4ef",
+  "theme_color": "#255e4f",
+  "categories": ["lifestyle", "books", "education"],
+  "icons": [
+    { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/assets/noor.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "shortcuts": [
+    { "name": "Prayer times", "url": "/", "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Read the Qur’an", "url": "/#q-1-1", "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

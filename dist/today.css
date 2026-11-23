@@ -1,0 +1,191 @@
+/* ---------- Today ---------- */
+body.today-open .page-layout { max-width:1120px;grid-template-columns:minmax(0,1fr); }
+body.today-open .right-sidebar { display:none; }
+.install-button { display:none !important; }
+body.can-install .install-button { display:flex !important; }
+
+.today { padding:28px 0 40px;display:flex;flex-direction:column;gap:22px; }
+.today-hero { position:relative;isolation:isolate;overflow:hidden;border-radius:22px;color:#f4efe2;padding:34px 38px 26px;min-height:520px;display:flex;flex-direction:column;background:#17211f;box-shadow:0 30px 60px -36px rgba(10,20,18,.55); }
+.today-hero-bg { position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.85) contrast(.95);transform:scale(1.04);animation:today-drift 40s ease-in-out infinite alternate; }
+.today-hero-shade { position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(9,14,13,.28) 0%,rgba(9,14,13,.42) 45%,rgba(9,14,13,.82) 100%); }
+.mood-night .today-hero-shade { background:linear-gradient(180deg,rgba(6,10,18,.35) 0%,rgba(6,10,18,.55) 50%,rgba(6,10,18,.88) 100%); }
+@keyframes today-drift { from { transform:scale(1.04) translate3d(0,0,0); } to { transform:scale(1.1) translate3d(-1.5%,-1%,0); } }
+.today-hero-top { display:flex;justify-content:space-between;align-items:flex-start;gap:20px; }
+.today-eyebrow { font-size:13px;letter-spacing:.02em;opacity:.82; }
+.today-hijri { font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:46px;line-height:1.08;letter-spacing:-1px;margin-top:10px; }
+.today-hijri span { opacity:.6;font-weight:400; }
+.today-hijri-ar { font-family:var(--arabic);font-size:21px;opacity:.78;margin-top:6px; }
+.today-place { display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.12);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.18);font-size:13px;white-space:nowrap;color:inherit; }
+.today-place .icon { width:16px;height:16px; }
+.today-place small { font-size:11px;opacity:.7;padding-left:6px;border-left:1px solid rgba(255,255,255,.3); }
+.today-place:hover { background:rgba(255,255,255,.2); }
+.today-season { display:inline-flex;align-items:center;flex-wrap:wrap;gap:10px;align-self:flex-start;margin-top:18px;padding:8px 8px 8px 14px;border-radius:12px;background:rgba(174,215,198,.16);border:1px solid rgba(174,215,198,.32);font-size:13px; }
+.today-season .icon { width:16px;height:16px;color:#cfe8dc; }
+.today-season button { display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:8px;background:rgba(255,255,255,.16);font-size:12px;color:inherit; }
+.today-season button .icon { width:14px;height:14px; }
+.today-next { margin-top:auto;padding-top:46px; }
+.today-next-label { font-size:13px;text-transform:uppercase;letter-spacing:.16em;opacity:.72; }
+.today-next-name { display:flex;align-items:baseline;gap:18px;font-size:72px;font-weight:600;letter-spacing:-3px;line-height:1;margin-top:8px; }
+.today-next-ar { font-family:var(--arabic);font-size:34px;font-weight:500;letter-spacing:0;opacity:.72; }
+.today-countdown { font-size:17px;margin-top:12px;opacity:.9;font-variant-numeric:tabular-nums; }
+.today-countdown strong { font-weight:600; }
+.sun-path { width:100%;height:auto;margin-top:18px;color:#f6d998;overflow:visible; }
+.sun-path .horizon { stroke:rgba(255,255,255,.28);stroke-width:1;stroke-dasharray:2 5; }
+.sun-path .sun-track { fill:none;stroke:url(#sun-glow);stroke-width:2;stroke-linecap:round; }
+.sun-mark circle { fill:rgba(255,255,255,.75); }
+.sun-mark text { fill:rgba(255,255,255,.62);font:500 11px var(--sans);letter-spacing:.04em; }
+.sun-mark.next circle { fill:#f6d998;r:5; }
+.sun-mark.next text { fill:#f6d998; }
+.sun-now { transition:transform 1s linear; }
+.sun-now .halo { fill:currentColor;opacity:.22;animation:sun-pulse 3.2s ease-in-out infinite; }
+.sun-now .core { fill:currentColor;filter:drop-shadow(0 0 8px currentColor); }
+.sun-now.night { color:#dfe7ff; }
+@keyframes sun-pulse { 0%,100% { r:12;opacity:.18; } 50% { r:18;opacity:.32; } }
+.today-prayers { list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);gap:8px; }
+.today-prayers li { display:flex;flex-direction:column;gap:3px;padding:12px 12px 11px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);transition:background .3s; }
+.today-prayers li.past { opacity:.55; }
+.today-prayers li.marker { background:transparent;border-style:dashed; }
+.today-prayers li.next { background:rgba(246,217,152,.2);border-color:rgba(246,217,152,.55);opacity:1; }
+.today-prayers li.current { background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.4);opacity:1; }
+.prayer-name { font-size:13px;font-weight:500; }
+.prayer-ar { font-family:var(--arabic);font-size:14px;opacity:.65;line-height:1.2; }
+.today-prayers time { font-size:19px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:4px; }
+.today-method { font-size:12px;opacity:.65;margin-top:14px; }
+.today-method button { color:inherit;text-decoration:underline;text-underline-offset:3px;font-size:12px; }
+
+.today-grid { display:grid;grid-template-columns:1.25fr 1fr;gap:22px; }
+.today-card { position:relative;border-radius:20px;background:var(--surface);border:1px solid var(--line);padding:24px;display:flex;flex-direction:column;overflow:hidden; }
+.today-card-head { display:flex;align-items:center;justify-content:space-between; }
+.today-card-label { display:flex;align-items:center;gap:8px;font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);font-weight:500; }
+.today-card-label .icon { width:16px;height:16px;color:var(--green); }
+.today-card-foot { font-size:12.5px;color:var(--muted);margin-top:auto;padding-top:16px; }
+.today-mini { display:grid;place-items:center;width:34px;height:34px;border-radius:9px;color:var(--muted); }
+.today-mini.text { width:auto;padding:0 12px;font-size:12px;border:1px solid var(--line);color:var(--text); }
+.today-mini:hover { background:var(--pale);color:var(--green); }
+.today-mini .icon { width:17px;height:17px; }
+.today-pill { display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 16px;border-radius:999px;font-size:13.5px;font-weight:500;border:1px solid currentColor;color:inherit; }
+.today-pill .icon { width:16px;height:16px; }
+.today-pill.solid { background:var(--green);border-color:var(--green);color:var(--surface);align-self:flex-start;margin-top:18px; }
+body.dark .today-pill.solid { color:#0f1716; }
+
+.today-verse { grid-row:span 2;color:#f4efe2;background:#1a2421;border:0;min-height:460px;padding:0; }
+.today-verse-bg { position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(.92) brightness(.62); }
+.today-verse::after { content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,15,14,.15),rgba(10,15,14,.7)); }
+.today-verse-inner { position:relative;z-index:1;display:flex;flex-direction:column;height:100%;padding:28px; }
+.today-verse .today-card-label { color:rgba(244,239,226,.78); }
+.today-verse .today-card-label .icon { color:#cfe8dc; }
+.today-verse-ar { font-family:var(--arabic);font-size:clamp(26px,3vw,36px);line-height:1.9;text-align:center;margin-top:auto;padding-top:28px;text-wrap:balance; }
+.today-verse-en { font-family:'Source Serif 4',Georgia,serif;font-size:clamp(18px,1.8vw,22px);line-height:1.5;text-align:center;margin-top:18px;text-wrap:pretty; }
+.today-verse-ref { text-align:center;font-size:13px;opacity:.72;margin-top:14px; }
+.today-verse-actions { display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:auto;padding-top:26px; }
+.today-verse-actions .today-pill { border-color:rgba(244,239,226,.38);background:rgba(255,255,255,.08);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px); }
+.today-verse-actions .today-pill:hover { background:rgba(255,255,255,.18); }
+.today-verse.loading { background:var(--surface);color:var(--text);padding:28px;gap:14px; }
+.today-verse.loading::after { display:none; }
+.today-skeleton { height:28px;border-radius:8px;background:linear-gradient(90deg,var(--pale),var(--line),var(--pale));background-size:200% 100%;animation:shimmer 1.4s infinite;margin-top:40px; }
+.today-skeleton.short { width:60%;margin:0 auto; }
+@keyframes shimmer { to { background-position:-200% 0; } }
+
+.today-tasbih { align-items:stretch; }
+.tasbih-orb { position:relative;width:min(220px,100%);aspect-ratio:1;margin:12px auto 4px;border-radius:50%;display:grid;place-items:center;transition:transform .12s ease; }
+.tasbih-orb:active { transform:scale(.965); }
+.tasbih-orb svg { position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg); }
+.tasbih-track { fill:var(--pale);stroke:var(--line);stroke-width:1; }
+.tasbih-ring { fill:none;stroke:var(--green);stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset .35s cubic-bezier(.3,.7,.3,1); }
+.tasbih-bead { fill:var(--muted);opacity:.35;transition:fill .2s,opacity .2s; }
+.tasbih-bead.on { fill:var(--surface);opacity:1; }
+.tasbih-inner { position:relative;display:flex;flex-direction:column;align-items:center;gap:2px; }
+.tasbih-ar { font-family:var(--arabic);font-size:22px;color:var(--green);line-height:1.4; }
+.tasbih-count { font-size:58px;font-weight:600;letter-spacing:-2px;line-height:1;font-variant-numeric:tabular-nums; }
+.tasbih-latin { font-size:12px;color:var(--muted); }
+.tasbih-done { display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--green);color:var(--surface); }
+.tasbih-done .icon { width:28px;height:28px; }
+.tasbih-steps { list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:6px; }
+.tasbih-steps li { font-size:12px;padding:8px;border-radius:9px;background:var(--bg);color:var(--muted);text-align:center;line-height:1.3; }
+.tasbih-steps li small { display:block;font-size:10.5px;opacity:.8;margin-top:2px; }
+.tasbih-steps li.active { background:var(--pale);color:var(--green);font-weight:500; }
+.tasbih-steps li.done { color:var(--green);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--green) 40%,transparent); }
+
+.qibla-dial-wrap { display:grid;place-items:center;padding:10px 0 2px; }
+.qibla-dial { width:min(200px,100%);height:auto;overflow:visible; }
+.qibla-rose { transform-origin:100px 100px;transition:transform .25s ease-out; }
+.qibla-face { fill:var(--bg);stroke:var(--line); }
+.qibla-ticks line { stroke:var(--muted);stroke-width:1;opacity:.6; }
+.qibla-dial text { fill:var(--muted);font:600 12px var(--sans); }
+.qibla-dial text.north { fill:#c45a3c; }
+.qibla-needle { fill:var(--green); }
+.qibla-kaaba { fill:#1c1c1c; }
+.qibla-kaaba-band { fill:#d6b25e; }
+body.dark .qibla-kaaba { fill:#000;stroke:#d6b25e;stroke-width:.6; }
+.qibla-pin { fill:var(--surface);stroke:var(--green);stroke-width:2; }
+.qibla-reading { text-align:center;font-size:14px;color:var(--muted);margin-top:8px; }
+.qibla-reading strong { font-size:26px;color:var(--text);font-weight:600;margin-right:4px; }
+.today-qibla.aligned { border-color:var(--green);box-shadow:0 0 0 3px color-mix(in srgb,var(--green) 25%,transparent); }
+.today-qibla.aligned .qibla-reading::after { content:' · You are facing the Qibla';color:var(--green);font-weight:500; }
+
+.today-streak { grid-column:1 / -1;display:grid;grid-template-columns:auto 1fr auto;column-gap:32px;align-items:center; }
+.today-streak .today-card-label { grid-column:1 / -1;margin-bottom:12px; }
+.streak-number { font-size:15px;color:var(--muted); }
+.streak-number strong { font-size:52px;font-weight:600;color:var(--text);letter-spacing:-2px;margin-right:6px; }
+.streak-caption { font-size:14px;color:var(--muted);line-height:1.6;max-width:380px; }
+.streak-week { list-style:none;padding:0;margin:0;display:flex;gap:10px; }
+.streak-week li { display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;color:var(--muted); }
+.streak-week span { width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line); }
+.streak-week li.on span { background:var(--green);border-color:var(--green); }
+.streak-week li.today span { box-shadow:0 0 0 3px var(--bg),0 0 0 4.5px var(--green); }
+.streak-goal { grid-column:1 / 3;display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:18px; }
+.streak-bar { grid-column:1 / 3;height:6px;border-radius:6px;background:var(--pale);overflow:hidden;margin-top:8px; }
+.streak-bar span { display:block;height:100%;background:var(--green);border-radius:inherit;transition:width .6s; }
+.today-streak .today-pill.solid { grid-column:3;grid-row:3 / 5;align-self:end;margin:0; }
+.today-disclaimer { font-size:12px;color:var(--muted);text-align:center;max-width:560px;margin:0 auto;line-height:1.6; }
+
+/* dialog controls */
+.today-select { width:100%;min-height:46px;padding:0 12px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--text);margin-bottom:14px; }
+.today-locate { width:100%;justify-content:center;margin:6px 0 20px; }
+.today-seg { display:flex;flex-wrap:wrap;gap:6px;padding:4px;border-radius:12px;background:var(--bg);border:1px solid var(--line);margin-bottom:12px; }
+.today-seg button { flex:1;min-height:38px;padding:6px 10px;border-radius:9px;font-size:12.5px;color:var(--muted); }
+.today-seg button.on { background:var(--surface);color:var(--text);font-weight:500;box-shadow:0 1px 3px rgba(0,0,0,.08); }
+
+/* share image */
+.share-image-stage { display:grid;place-items:center;margin:6px auto 16px;border-radius:14px;overflow:hidden;background:var(--bg);aspect-ratio:4/5;max-height:56vh;width:auto; }
+.share-image-stage.format-story { aspect-ratio:9/16; }
+.share-image-stage.format-square { aspect-ratio:1; }
+.share-image-stage img { width:100%;height:100%;object-fit:contain;display:block;animation:share-in .45s ease both; }
+@keyframes share-in { from { opacity:0;transform:scale(.98); } }
+.share-image-loading { display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;padding:20px; }
+.share-image-loading .icon { width:18px;height:18px;animation:spin-soft 1.4s ease-in-out infinite; }
+@keyframes spin-soft { 50% { opacity:.4;transform:scale(.9); } }
+.share-formats { margin-bottom:4px; }
+.dialog-actions .icon { width:18px;height:18px; }
+
+@media (max-width:1100px) {
+  .today-prayers { grid-template-columns:repeat(3,1fr); }
+}
+@media (max-width:860px) {
+  .today { padding:16px 0 28px;gap:16px; }
+  .today-grid { grid-template-columns:1fr;gap:16px; }
+  .today-verse { grid-row:auto;min-height:420px; }
+  .today-streak { grid-template-columns:1fr;row-gap:14px; }
+  .today-streak > * { grid-column:1 !important;grid-row:auto !important; }
+  .today-streak .today-pill.solid { justify-self:start; }
+}
+@media (max-width:620px) {
+  .today-hero { border-radius:0;margin:0 -16px;padding:24px 20px 20px;min-height:calc(100dvh - 140px); }
+  .today-hijri { font-size:34px; }
+  .today-hijri-ar { font-size:18px; }
+  .today-hero-top { flex-direction:column-reverse;gap:16px; }
+  .today-next { padding-top:30px; }
+  .today-next-name { font-size:56px;gap:12px; }
+  .today-next-ar { font-size:26px; }
+  .today-prayers { grid-template-columns:repeat(3,1fr);gap:6px; }
+  .today-prayers li { padding:10px; }
+  .today-prayers time { font-size:17px; }
+  .sun-mark text { font-size:14px; }
+  .today-card { padding:20px;border-radius:18px; }
+  .today-verse { padding:0; }
+  .streak-week { gap:7px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .today-hero-bg,.sun-now .halo { animation:none; }
+  .tasbih-ring,.sun-now { transition:none; }
+}

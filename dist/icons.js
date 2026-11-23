@@ -33,6 +33,9 @@ const paths = {
   plus: '<path d="M12 5v14M5 12h14"/>',
   info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/>',
   clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  sunrise: '<path d="M12 3v4m-7.8 1.2 2.8 2.8m14.6-2.8-2.8 2.8M2 18h20M6 18a6 6 0 0 1 12 0M5 22h14"/>',
+  image: '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-4.5-4.5L5 21"/>',
+  download: '<path d="M12 3v13m-5-5 5 5 5-5M5 21h14"/>',
   reset: '<path d="M3 10a9 9 0 1 1 1 7M3 4v6h6"/>',
 };
 export const icon = (name, cls = '') => `<svg class="icon ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name] || paths.spark}</svg>`;
