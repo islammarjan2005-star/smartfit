@@ -1,0 +1,148 @@
+.hide-transliteration .transliteration{display:none}
+.reader-open .page-layout{display:block;max-width:1230px;padding-top:25px;padding-bottom:140px}
+.reader-open .page-layout>.right-sidebar{display:none}
+.reader{--reader-border:#e1e6dc;--reader-soft:#f0f3ea;max-width:1120px;margin:0 auto}
+.reader button{touch-action:manipulation}.reader button:disabled{cursor:default;opacity:.35}
+.reader-navigation{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;font-size:11px;color:var(--muted)}
+.reader-back,.reader-browse{display:flex;align-items:center;gap:8px;padding:7px 0}.reader-navigation .icon{width:15px;height:15px}.reader-back>.icon{transform:rotate(180deg)}
+.reader-cover{position:relative;overflow:hidden;background:linear-gradient(115deg,#193e33,#2e5341);border:1px solid #345b49;border-radius:19px;padding:32px 35px 23px;color:#edf0e2}
+.reader-cover:after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.14;background:repeating-radial-gradient(circle at 80% 0%,transparent 0 49px,#e0e9bd 50px 51px,transparent 52px 94px)}
+.reader-cover>*{position:relative;z-index:1}.reader-cover-orbit{position:absolute;right:-16px;bottom:-55px;font-size:270px;line-height:1;color:#abc28b;opacity:.1;z-index:0}
+.reader-kicker{display:block;font-size:9px;letter-spacing:2px;font-weight:500;color:#b9c9a6}
+.reader-cover h1{font-family:var(--serif);font-weight:400;font-size:44px;letter-spacing:-.8px;margin:13px 0 7px}.reader-cover>p{font-size:11px;color:#c6d3bd;line-height:1.8}.reader-cover>p span{padding:0 7px;opacity:.6}
+.reader-surah-arabic{position:absolute;right:35px;top:45px;font-family:var(--arabic);font-size:37px;color:#e0e8cb;max-width:47%;line-height:1.8;text-align:right}
+.reader-cover-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #b5c7a731;margin-top:27px;padding-top:18px;gap:15px}
+.reader-cover-bottom>span{font-size:10px;display:flex;gap:7px;align-items:center;color:#bbcbae}.reader-cover-bottom .icon{width:14px;height:14px}
+.reader-cover-bottom button{display:flex;align-items:center;gap:7px;color:#e9efdc;font-size:11px}.reader-cover-bottom b{font-weight:500}
+.reader-mode-row{display:flex;justify-content:space-between;align-items:center;margin:22px 0 25px;gap:15px}.reader-modes{display:flex;gap:4px;background:var(--reader-soft);border:1px solid var(--reader-border);padding:4px;border-radius:11px}
+.reader-modes button{display:flex;align-items:center;gap:8px;padding:10px 21px;border-radius:8px;font-size:11px;color:var(--muted)}.reader-modes .icon{width:15px;height:15px}.reader-modes button[aria-selected=true]{background:var(--surface);color:var(--green);box-shadow:0 1px 5px #20392712}
+.reader-jump{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:9px}.reader select{background:var(--surface);border:1px solid var(--reader-border);border-radius:7px;color:var(--text);padding:9px 11px;min-height:36px;font-size:11px;max-width:100%}.reader-jump select{min-width:62px}
+.reader-layout{display:grid;grid-template-columns:minmax(0,1fr) 248px;gap:25px;align-items:start}.reader-pages{min-width:0}.reader-reading-note{font-size:10px;color:var(--muted);line-height:1.8;margin-bottom:18px;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}.reader-reading-note button{font-size:9px;color:var(--green);display:flex;gap:5px;align-items:center;padding:0}.reader-reading-note .icon{width:11px;height:11px}
+.reader-verses{border:1px solid var(--reader-border);border-radius:15px;overflow:hidden;background:var(--surface)}
+.reader-ayah{padding:25px 28px 29px;border-bottom:1px solid var(--reader-border);scroll-margin-top:24px;transition:background .2s;position:relative}.reader-ayah:last-child{border-bottom:0}.reader-ayah.is-current{background:var(--reader-soft);box-shadow:inset 3px 0 #779567}
+.reader-ayah-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:19px}.ayah-number{font-size:10px;color:var(--green);font-weight:500;min-width:39px;border:1px solid #9dad8b44;border-radius:7px;padding:6px 9px;min-height:32px;letter-spacing:.4px}
+.ayah-actions{display:flex;gap:5px}.ayah-actions button{display:grid;place-items:center;width:33px;height:33px;color:#8c9a83;border-radius:50%}.ayah-actions button:hover,.ayah-actions button[aria-pressed=true]{background:#dbe5ce8c;color:var(--green)}.ayah-actions .icon{width:15px;height:15px}.ayah-actions [aria-pressed=true] .icon{fill:#b8cea2}
+.reader-arabic{font-family:var(--arabic);font-size:31px;line-height:2.1;font-weight:400;text-align:right;color:var(--text);overflow-wrap:anywhere}
+.reader-translation{font-size:14px;line-height:1.95;color:#6c786b;margin-top:17px;letter-spacing:.05px;overflow-wrap:anywhere}
+.reader-type-large .reader-arabic{font-size:37px}.reader-translation[hidden]{display:none}
+.reader-tools{position:sticky;top:22px}.reader-options{background:var(--surface);border:1px solid var(--reader-border);border-radius:13px;padding:0 19px}.reader-options summary{display:flex;align-items:center;gap:8px;list-style:none;padding:18px 0;font-size:12px;color:var(--green);cursor:pointer}.reader-options summary::-webkit-details-marker{display:none}.reader-options summary>.icon{width:16px;height:16px}.reader-options summary>.icon:last-child{margin-left:auto;width:13px}.reader-options[open] summary>.icon:last-child{transform:rotate(180deg)}
+.reader-options-body{padding:0 0 20px}.reader-option-label{display:block;font-size:8px;letter-spacing:1.4px;color:#8e9b83;margin:4px 0 10px}.reader-options-body>select{width:100%;font-size:10px;padding-left:9px}
+.reader-two-options{display:grid;grid-template-columns:1fr 1.25fr;gap:10px;margin-top:18px}.reader-two-options label{font-size:9px;color:var(--muted)}.reader-two-options select{display:block;width:100%;margin-top:7px;font-size:10px;padding:8px}
+.reader-display-options{margin-top:20px;padding-top:6px;border-top:1px solid var(--reader-border)}.reader-display-options label{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:10px;color:var(--muted);padding:12px 0 0;cursor:pointer}.reader-display-options input{width:16px;height:16px;accent-color:#466647;cursor:pointer}
+.reader-place{margin-top:23px;padding:16px;border-radius:10px;background:var(--reader-soft)}.reader-place strong{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--green)}.reader-place strong span{display:block;font-family:var(--sans);font-size:10px;margin-top:6px;color:var(--muted)}.reader-place p{font-size:9px;line-height:1.8;color:var(--muted);margin:10px 0}.reader-place button{display:flex;align-items:center;gap:7px;padding:0;font-size:10px;color:var(--green)}.reader-place .icon{width:14px;height:14px}
+.reader-audio-note{display:flex;align-items:start;gap:7px;font-size:9px;color:var(--muted);line-height:1.8;margin-top:17px}.reader-audio-note .icon{width:13px;height:13px;margin-top:3px}
+.reader-player{position:fixed;left:267px;right:43px;bottom:20px;z-index:35;display:flex;align-items:center;gap:25px;max-width:1120px;margin:auto;background:#fdfef9f5;backdrop-filter:blur(18px);border:1px solid #d8e2cf;box-shadow:0 9px 40px #203b2424;border-radius:14px;padding:17px 21px;color:#354b36}
+.reader-player-info{display:flex;align-items:center;gap:11px;min-width:180px;flex:1}.reader-player-art{display:grid;place-items:center;width:41px;height:41px;border-radius:9px;background:#e9efdf;color:#6e8b5e}.reader-player-art .icon{width:21px}.reader-player-info strong{display:block;font-size:12px;font-weight:550}.reader-player-info strong span{font-weight:400;color:#8a987d;font-size:10px}.reader-player-info small{display:block;font-size:9px;color:#8e9b83;margin-top:6px}.reader-player-info b{font-weight:400}
+.reader-play-controls{display:flex;align-items:center;gap:13px}.reader-play-controls>button{width:32px;height:32px;display:grid;place-items:center;border-radius:50%}.reader-play-controls .icon{width:18px;height:18px}.reader-play-controls>button:first-child>.icon{transform:rotate(180deg)}.reader-play-controls>.reader-play-main{width:42px;height:42px;background:#355b43;color:#f6f8ef;box-shadow:0 3px 8px #355b4322}.reader-play-main .icon{width:16px;height:16px}
+.reader-player-timeline{flex:1;min-width:120px;max-width:275px}.reader-player-timeline input{width:100%;display:block;accent-color:#4f734c;height:3px;cursor:pointer;margin:0 0 10px}.reader-player-timeline>div{display:flex;justify-content:space-between;gap:9px;font-size:8px;color:#8d9b82;font-variant-numeric:tabular-nums}.reader-player-timeline #reader-play-status{text-align:right}
+.reader-chapter-end{text-align:center;padding:40px 15px 20px}.reader-chapter-end>.icon{width:25px;height:25px;color:#9baa86;margin:0 auto 17px}.reader-chapter-end h2{font:26px var(--serif);color:var(--green)}.reader-chapter-end p{font-size:11px;line-height:1.8;color:var(--muted);margin:10px 0 20px}.reader-chapter-end button{margin:auto;font-size:11px}
+.reader-loading,.reader-load-error{text-align:center;padding:80px 20px;color:var(--muted);line-height:1.8}.reader-loading>.icon{width:32px;height:32px;margin:0 auto 20px}.reader-load-error h2{font:28px var(--serif);color:var(--green);margin-bottom:12px}.reader-load-error button{margin:24px auto 0}
+.practice-intro{padding:8px 0 24px}.practice-intro .reader-kicker{color:#9aa887;font-size:8px}.practice-intro h2{font:31px var(--serif);color:var(--green);margin:10px 0}.practice-intro p{font-size:11px;color:var(--muted);line-height:1.8;max-width:420px}
+.practice-card{border:1px solid var(--reader-border);background:var(--surface);border-radius:16px;padding:25px 27px}.practice-card-top{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:10px;color:#87977a;margin-bottom:22px}.practice-card-top>span:last-child{display:flex;align-items:center;gap:5px;font-size:9px}.practice-card-top .icon{width:12px;height:12px}.practice-hidden{min-height:225px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 15px 30px;background:radial-gradient(ellipse,#e8efdf7a,transparent 70%)}.practice-flower{font-size:65px;color:#9bb086;font-weight:300;line-height:1;margin-bottom:21px}.practice-hidden h3{font:24px var(--serif);color:var(--green)}.practice-hidden p{max-width:260px;line-height:1.8;color:var(--muted);font-size:11px;margin-top:11px}.practice-reveal{margin:24px auto 0;display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid #cfdbc3;background:var(--reader-soft);color:var(--green);padding:12px 19px;border-radius:9px;font-size:11px;min-width:200px}.practice-reveal .icon{width:16px;height:16px}
+.practice-navigation{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:18px 0 0;font-size:9px;color:#8b997e}.practice-navigation button{display:flex;align-items:center;gap:5px;padding:9px 0;color:var(--green)}.practice-navigation .icon{width:14px;height:14px}.practice-navigation button:first-child>.icon{transform:rotate(180deg)}.practice-range{margin-top:20px;padding-top:16px;border-top:1px solid var(--reader-border)}.practice-range .reader-two-options{margin-top:9px;grid-template-columns:1fr 1fr}.practice-range p{font-size:9px;color:var(--muted);line-height:1.8;margin-top:11px}
+.dark .reader{--reader-border:#304537;--reader-soft:#213b2b}.dark .reader-translation{color:#b2c2a5}.dark .reader-player{background:#1a3027f7;border-color:#3c5140;color:#dfe7d4}.dark .reader-player-art{background:#2c4433;color:#abc194}.dark .reader-modes button[aria-selected=true]{box-shadow:none}.dark .reader-options input{color-scheme:dark}.dark .practice-hidden{background:radial-gradient(ellipse,#36533244,transparent 70%)}
+@media(max-width:1150px){.reader-layout{grid-template-columns:minmax(0,1fr) 225px;gap:19px}.reader-cover{padding:28px}.reader-cover h1{font-size:38px}.reader-surah-arabic{font-size:31px;right:28px}.reader-cover-bottom>span{font-size:9px}.reader-player{gap:17px}.reader-player-info{min-width:160px}.reader-ayah{padding:22px}.reader-arabic{font-size:29px}}
+@media(max-width:1050px){.reader-player{left:106px;right:30px}.reader-open .page-layout{padding-left:25px;padding-right:25px}.reader-layout{grid-template-columns:minmax(0,1fr) 220px}.reader-player-art{display:none}.reader-player-info{min-width:145px}.reader-surah-arabic{font-size:29px;max-width:42%}}
+@media(max-width:760px){.reader-layout{display:flex;flex-direction:column;gap:20px}.reader-tools{position:static;width:100%;order:-1}.reader-pages{width:100%}.reader-options-body{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}.reader-options-body>.reader-option-label{grid-column:1}.reader-options-body>#reader-reciter{grid-column:1}.reader-two-options{margin-top:0;grid-column:2;grid-row:1/3}.reader-display-options{border:0;margin:9px 0 0;grid-column:1;grid-row:3}.reader-place{grid-column:2;grid-row:3/5;margin-top:18px}.reader-audio-note{grid-column:1;grid-row:4}.practice-range{grid-column:1/3;grid-row:5}.practice-range .reader-two-options{display:grid}.reader-cover-bottom{gap:8px}.reader-cover-bottom>span{font-size:8px}.reader-cover-bottom button{font-size:10px}.reader-surah-arabic{font-size:27px}.reader-player{gap:12px}.reader-player-info strong{font-size:11px}.reader-player-info small{font-size:8px}.reader-player-timeline{min-width:90px}.reader-play-controls{gap:7px}}
+@media(max-width:540px){.reader-open .page-layout{padding:5px 15px 230px}.reader-navigation{font-size:10px;margin-bottom:14px}.reader-cover{border-radius:15px;padding:24px 22px 18px}.reader-kicker{font-size:8px;letter-spacing:1.5px}.reader-cover h1{font-size:34px;margin-top:12px}.reader-cover>p{font-size:9px;max-width:200px}.reader-cover>p span{padding:0 3px}.reader-surah-arabic{position:relative;top:auto;right:auto;margin-top:15px;font-size:27px;max-width:100%;text-align:left}.reader-cover-bottom{margin-top:18px;padding-top:15px;align-items:start}.reader-cover-bottom>span{max-width:130px;font-size:9px;line-height:1.7;align-items:start}.reader-cover-bottom>span .icon{margin-top:3px}.reader-cover-bottom button{font-size:10px;padding:3px 0;white-space:nowrap;gap:5px}.reader-mode-row{margin:18px 0;gap:8px}.reader-modes button{padding:10px 13px;font-size:10px;gap:5px}.reader-modes .icon{width:14px;height:14px}.reader-jump{gap:6px;font-size:9px}.reader-jump select{min-width:53px;padding:8px}.reader-options{padding:0 15px}.reader-options summary{padding:15px 0;font-size:11px}.reader-options-body{gap:0 13px;padding-bottom:16px}.reader-options-body>select{font-size:9px;padding:8px 4px}.reader-two-options{gap:7px}.reader-two-options label{font-size:8px}.reader-two-options select{font-size:9px;padding:7px 4px}.reader-display-options label{font-size:9px}.reader-place{padding:12px}.reader-place strong{font-size:17px}.reader-place p{font-size:8px}.reader-audio-note{font-size:8px;gap:5px}.reader-reading-note{font-size:9px;margin-bottom:12px}.reader-ayah{padding:20px 20px 23px}.reader-ayah-top{margin-bottom:14px}.reader-arabic{font-size:28px;line-height:2}.reader-type-large .reader-arabic{font-size:34px}.reader-translation{font-size:13px;line-height:1.9;margin-top:12px}.ayah-actions{gap:4px}.ayah-actions button{width:32px;height:32px}.reader-player{left:10px;right:10px;bottom:calc(74px + env(safe-area-inset-bottom));display:grid;grid-template-columns:1fr auto;gap:13px 8px;border-radius:12px;padding:13px 14px 11px}.reader-player-info{min-width:0;gap:7px}.reader-player-info strong{font-size:11px}.reader-player-info strong span{font-size:9px}.reader-player-info small{font-size:8px;margin-top:5px}.reader-player-art{display:none}.reader-play-controls{gap:4px}.reader-play-controls>.reader-play-main{width:35px;height:35px}.reader-play-controls>button{width:27px;height:27px}.reader-play-controls .icon{width:16px;height:16px}.reader-player-timeline{grid-column:1/3;min-width:0;max-width:none;width:100%}.reader-player-timeline input{margin-bottom:9px}.reader-player-timeline>div{font-size:8px}.reader-chapter-end{padding:30px 12px}.reader-chapter-end h2{font-size:24px}.reader-open .toast{bottom:205px}.practice-intro{padding:4px 0 20px}.practice-intro h2{font-size:29px}.practice-intro p{font-size:10px}.practice-card{padding:20px}.practice-card-top{font-size:9px}.practice-card-top>span:last-child{font-size:8px}.practice-hidden{min-height:205px;padding:10px 5px 20px}.practice-hidden h3{font-size:22px}.practice-hidden p{font-size:10px}.practice-reveal{font-size:10px}.practice-navigation{font-size:9px}.reader-loading{padding:60px 10px}}
+@media(prefers-reduced-motion:reduce){.reader-ayah{transition:none}}
+/* Reader matches the quieter, text-first interface. */
+.reader,.dark .reader { --reader-border:var(--line);--reader-soft:var(--pale); }
+.reader-open .page-layout { padding-top:24px;max-width:1230px; }
+.reader-navigation { font-size:13px; }
+.reader-back,.reader-browse { min-height:44px; }
+.reader-cover { background:var(--surface);border:1px solid var(--line);border-radius:10px;color:var(--text);padding:30px; }
+.reader-cover:after,.reader-cover-orbit { display:none; }
+.reader-kicker { font-size:12px;letter-spacing:0;color:var(--muted); }
+.reader-cover h1 { font-family:var(--sans);font-size:44px;font-weight:500;color:var(--text); }
+.reader-cover>p { font-size:14px;color:var(--muted); }
+.reader-surah-arabic { color:var(--green);font-size:40px; }
+.reader-cover-bottom { border-color:var(--line);margin-top:24px; }
+.reader-cover-bottom>span,.reader-cover-bottom button { font-size:13px;color:var(--muted); }
+.reader-cover-bottom button { min-height:44px;color:var(--green); }
+.reader-modes { border-radius:7px; }
+.reader-modes button { font-size:14px;min-height:44px;border-radius:4px; }
+.reader-jump { font-size:13px; }
+.reader select { font-size:14px;min-height:44px; }
+.reader-reading-note { font-size:12px; }
+.reader-reading-note button { font-size:12px;min-height:32px; }
+.reader-options { border-radius:8px; }
+.reader-options summary { font-size:14px;min-height:52px; }
+.reader-option-label { font-size:11px;letter-spacing:0;color:var(--muted); }
+.reader-options-body>select,.reader-two-options select { font-size:13px; }
+.reader-two-options label,.reader-display-options label { font-size:12px; }
+.reader-display-options label { min-height:44px; }
+.reader-display-options input { width:20px;height:20px;accent-color:var(--green); }
+.reader-place strong { font:500 21px var(--sans); }
+.reader-place strong span,.reader-place p,.reader-place button,.reader-audio-note { font-size:12px; }
+.reader-verses { border-radius:8px; }
+.reader-ayah { padding:28px 32px; }
+.reader-ayah.is-current { box-shadow:inset 3px 0 var(--green); }
+.ayah-number { min-height:40px;font-size:12px; }
+.ayah-actions button { width:44px;height:44px;color:var(--muted); }
+.ayah-actions .icon { width:18px;height:18px; }
+.reader-arabic { font-size:35px;line-height:2.1; }
+.reader-translation,.dark .reader-translation { color:var(--muted);font-size:16px;line-height:1.9; }
+.reader-player { left:248px;right:40px; }
+.reader-player,.dark .reader-player {background:var(--surface);border:1px solid var(--line);color:var(--text);box-shadow:0 10px 35px #0003;border-radius:10px; }
+.reader-player-art,.dark .reader-player-art { background:var(--pale);color:var(--green); }
+.reader-player-info strong { font-size:14px; }
+.reader-player-info strong span,.reader-player-info small { font-size:12px;color:var(--muted); }
+.reader-play-controls>button { width:44px;height:44px; }
+.reader-play-controls>.reader-play-main { width:46px;height:46px;background:var(--green);color:var(--bg); }
+.reader-player-timeline>div { font-size:11px;color:var(--muted); }
+.reader-player-timeline input { accent-color:var(--green);height:20px;margin:0 0 4px; }
+.practice-intro .reader-kicker { font-size:11px;color:var(--muted); }
+.practice-intro p,.practice-hidden p { font-size:14px; }
+.practice-card { border-radius:8px; }
+.practice-card-top,.practice-card-top>span:last-child { font-size:12px;color:var(--muted); }
+.practice-hidden,.dark .practice-hidden { background:none; }
+.practice-flower { display:none; }
+.practice-reveal { min-height:48px;font-size:14px;border-color:var(--line); }
+.practice-navigation { font-size:12px; }
+.practice-navigation button { min-height:44px; }
+.practice-range p { font-size:12px; }
+@media(max-width:1220px) { .reader-player { left:212px;right:28px; } }
+@media(max-width:800px) { .reader-player { left:105px;right:25px; }.reader-cover h1 { font-size:37px; } }
+@media(max-width:600px) {
+ .reader-open .page-layout { padding:4px 18px 250px; }
+ .reader-cover { padding:24px 22px 14px; }
+ .reader-cover h1 { font-size:34px; }
+ .reader-cover>p { font-size:13px;max-width:none; }
+ .reader-surah-arabic { position:static;max-width:none;text-align:left;font-size:31px;margin-top:18px; }
+ .reader-cover-bottom { margin-top:16px;padding-top:12px; }
+ .reader-cover-bottom>span { display:none; }
+ .reader-cover-bottom button { font-size:13px; }
+ .reader-modes button { padding:9px 12px;font-size:13px; }
+ .reader-jump { font-size:12px; }
+ .reader select,.reader-options-body>select,.reader-two-options select { font-size:16px; }
+ .reader-options-body { display:block; }
+ .reader-options-body>.reader-option-label { margin-top:4px; }
+ .reader-two-options { margin-top:15px; }
+ .reader-place { margin-top:18px; }
+ .reader-display-options { margin-top:15px; }
+ .reader-option-label,.reader-two-options label,.reader-display-options label { font-size:12px; }
+ .reader-place strong { font-size:22px; }
+ .reader-place p,.reader-place strong span { font-size:12px; }
+ .reader-ayah { padding:24px 20px; }
+ .reader-arabic { font-size:31px; }
+ .reader-translation { font-size:15px; }
+ .reader-player { left:10px;right:10px;bottom:calc(80px + env(safe-area-inset-bottom));display:grid;grid-template-columns:1fr auto;gap:10px 6px;padding:12px; }
+ .reader-player-info { min-width:0; }
+ .reader-player-info strong { font-size:13px; }
+ .reader-player-info strong span,.reader-player-info small { font-size:10px; }
+ .reader-play-controls { gap:0; }
+ .reader-play-controls>button { width:40px;height:44px; }
+ .reader-play-controls>.reader-play-main { width:44px;height:44px; }
+ .reader-player-art { display:none; }
+ .reader-player-timeline { grid-column:1/3;width:100%;max-width:none; }
+ .reader-player-timeline>div { font-size:10px; }
+ .practice-intro p,.practice-hidden p { font-size:14px; }
+ .practice-card-top,.practice-card-top>span:last-child { font-size:11px; }
+}
+@media(max-width:600px) {
+ .reader-cover { padding:20px; }
+ .reader-cover h1 { font-size:32px;margin:10px 0 7px; }
+ .reader-surah-arabic { font-size:29px;line-height:1.6;margin-top:12px; }
+ .reader-cover-bottom { display:none; }
+}

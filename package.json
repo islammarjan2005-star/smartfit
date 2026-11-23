@@ -1,0 +1,12 @@
+{
+  "name": "noor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "check": "node --check dist/app.js && node --check dist/content.js && node --check dist/icons.js && node --check dist/library.js && node --check dist/feed-window.js && node --check dist/hadith-content.js && node --check dist/reader.js && node --check dist/recitation.js && node --check dist/photography.js && node --check dist/photo-library.js && node --check dist/photo-topics.js && node --check dist/reading-keyboard.js && node --check dist/personal-library.js && node --check dist/personal-ui.js",
+    "test": "node --test tests/*.test.mjs",
+    "import:quran": "node scripts/import-quran.mjs"
+  }
+}

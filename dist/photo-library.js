@@ -1,0 +1,479 @@
+// Genuine photographs and source attribution. See each source for its Unsplash license.
+export const photos = [
+  {
+    "id": "rain",
+    "source": "https://unsplash.com/photos/a-window-with-rain-drops-on-the-glass-wPiCC_66m3U",
+    "photographer": "Luis Quintero",
+    "alt": "Rain on a window with soft light beyond",
+    "tags": [
+      "rain",
+      "water"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1559706679-c7c976730b13?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "rain.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 1867
+  },
+  {
+    "id": "olives",
+    "source": "https://unsplash.com/photos/an-olive-tree-with-lots-of-olives-growing-on-it-BXVnafOID_8",
+    "photographer": "Natalia Gusakova",
+    "alt": "Olives growing among silver-green leaves",
+    "tags": [
+      "trees",
+      "harvest",
+      "gardens"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1703299297554-be88b58fdc28?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "olives.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "id": "dates",
+    "source": "https://unsplash.com/photos/a-bowl-full-of-dates-sitting-on-a-table-hSNpRCc9IyY",
+    "photographer": "Mustafa akın",
+    "alt": "A bowl of dates on a table",
+    "tags": [
+      "dates",
+      "giving",
+      "harvest"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1710177213778-930725fda054?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "dates.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "id": "prayer-hall",
+    "source": "https://unsplash.com/photos/empty-prayer-hall-with-patterned-ceiling-and-carpet-lines-5ztvgeVTT1E",
+    "photographer": "Ahmed Farook",
+    "alt": "An empty mosque prayer hall in Kuwait",
+    "tags": [
+      "prayer"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1776503661066-a6b485728a9c?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "prayer-hall.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 1866
+  },
+  {
+    "id": "stars",
+    "source": "https://unsplash.com/photos/the-night-sky-is-full-of-stars-WZlvF6k5fQQ",
+    "photographer": "Kai Pilger",
+    "alt": "Stars across a dark night sky",
+    "tags": [
+      "night",
+      "sky"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1713107014129-11d9319c5764?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "stars.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "id": "dawn-mountains",
+    "source": "https://unsplash.com/photos/mountains-emerge-from-a-sea-of-clouds-at-dawn-Nk9AlZ5WPu8",
+    "photographer": "ki Zhang",
+    "alt": "Mountain peaks rising through clouds at dawn",
+    "tags": [
+      "dawn",
+      "mountains",
+      "sky"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1772089003225-6eccf98ddbf9?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "dawn-mountains.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "id": "mountain-light",
+    "source": "https://unsplash.com/photos/mountains-during-daytime-VHOTPojvySM",
+    "photographer": "Todd Diemer",
+    "alt": "Morning sunlight over Yosemite mountains",
+    "tags": [
+      "mountains",
+      "dawn"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1477459815195-9128af1e119a?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "mountain-light.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 896
+  },
+  {
+    "id": "ocean-waves",
+    "source": "https://unsplash.com/photos/ocean-waves-crashing-under-a-warm-sky-Ty3FE6YCwpI",
+    "photographer": "Kellen Riggin",
+    "alt": "Ocean waves beneath a warm sky",
+    "tags": [
+      "ocean",
+      "sky"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1769292169574-b5c7e5ff518f?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "ocean-waves.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 1867
+  },
+  {
+    "id": "ocean-sunset",
+    "source": "https://unsplash.com/photos/sunset-over-the-ocean-with-gentle-waves-0czHAdon3js",
+    "photographer": "Matthew Pablico",
+    "alt": "Gentle ocean waves in sunset light",
+    "tags": [
+      "ocean",
+      "sky"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1756660908471-a4443ca3703b?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "ocean-sunset.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "id": "books",
+    "source": "https://unsplash.com/photos/stack-of-books-on-a-table-U3NvR6JJuiw",
+    "photographer": "Compagnons",
+    "alt": "A stack of books on a table",
+    "tags": [
+      "books"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1776278705079-b2090290994e?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "books.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "id": "forest-path",
+    "source": "https://unsplash.com/photos/a-path-through-a-forest-with-lots-of-trees-ck2ZZIUQRdo",
+    "photographer": "Florian Pinkert",
+    "alt": "A path through tall green forest trees",
+    "tags": [
+      "path",
+      "trees"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1635752019785-6637044adea9?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "forest-path.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 2100
+  },
+  {
+    "id": "autumn-path",
+    "source": "https://unsplash.com/photos/a-path-in-the-middle-of-a-forest-IaSMz1qhVXM",
+    "photographer": "Pascal Debrunner",
+    "alt": "An autumn path through a misty forest",
+    "tags": [
+      "path",
+      "trees"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1696853042590-21f05c997e6e?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "autumn-path.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "id": "river",
+    "source": "https://unsplash.com/photos/a-river-flowing-through-a-lush-green-forest-1XY-qR9MDAc",
+    "photographer": "Adrien Olichon",
+    "alt": "A river flowing through a green forest",
+    "tags": [
+      "river",
+      "trees",
+      "gardens"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1694434137000-7a97e0f686db?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "river.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 2100
+  },
+  {
+    "id": "birds-flight",
+    "source": "https://unsplash.com/photos/birds-flying-during-day-J54DjpXYJuE",
+    "photographer": "Nick Fewings",
+    "alt": "Geese flying together across a blue sky",
+    "tags": [
+      "birds",
+      "sky"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1567800941615-e8511cdd92d3?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "birds-flight.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 1050
+  },
+  {
+    "id": "birds-dawn",
+    "source": "https://unsplash.com/photos/birds-flying-in-the-sky-Ak_Mnvqjgrw",
+    "photographer": "Pascal Debrunner",
+    "alt": "Birds above a misty landscape at dawn",
+    "tags": [
+      "birds",
+      "dawn",
+      "sky"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1669638902120-ff1276cab370?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "birds-dawn.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "id": "sand-dunes",
+    "source": "https://unsplash.com/photos/soft-sand-dunes-under-a-pale-blue-sky-5vW7V1X5zbE",
+    "photographer": "Royce Fonseca",
+    "alt": "Soft sand dunes under a pale blue sky",
+    "tags": [
+      "desert",
+      "sky"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1765498069278-77afd07c6ec9?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "sand-dunes.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 934
+  },
+  {
+    "id": "clouds",
+    "source": "https://unsplash.com/photos/white-clouds-and-blue-sky-eZUaKlYDD8k",
+    "photographer": "Lina White",
+    "alt": "White clouds against deep blue sky",
+    "tags": [
+      "sky"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1579773008348-11baad21e64c?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "clouds.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 930
+  },
+  {
+    "id": "quran-page",
+    "source": "https://unsplash.com/photos/a-close-up-of-an-open-book-with-arabic-writing-JSTOqD9_llo",
+    "photographer": "MATAQ Darul Ulum",
+    "alt": "An open Qur’an at Al-Fatihah",
+    "tags": [
+      "books",
+      "prayer"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1637721958581-be9cc2dcc753?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "quran-page.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 935
+  },
+  {
+    "id": "quran-reading",
+    "source": "https://unsplash.com/photos/person-reading-open-booked-2d1-OSHkHXM",
+    "photographer": "Rachid Oucharia",
+    "alt": "Hands holding an open Qur’an",
+    "tags": [
+      "books",
+      "prayer"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1574545640323-59dc7a2b4a6d?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "quran-reading.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "id": "garden",
+    "source": "https://unsplash.com/photos/a-garden-filled-with-lots-of-different-types-of-flowers-AXKSrzKuj3s",
+    "photographer": "Tsuyoshi Kozu",
+    "alt": "Flowers and green plants in a garden",
+    "tags": [
+      "gardens",
+      "trees"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1728310910908-1ecaba62841d?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "garden.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 2100
+  },
+  {
+    "id": "care",
+    "source": "https://unsplash.com/photos/two-hands-holding-each-other-with-care-mwGrAl1X514",
+    "photographer": "Thomas Griggs",
+    "alt": "Two hands held together with care",
+    "tags": [
+      "family",
+      "giving"
+    ],
+    "focalPoint": "50% 65%",
+    "downloadUrl": "https://images.unsplash.com/photo-1773234005378-ceebf3c877b9?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "care.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 954
+  },
+  {
+    "id": "family",
+    "source": "https://unsplash.com/photos/four-hands-of-different-ages-reaching-towards-center-Cp8A9ankh18",
+    "photographer": "Barnabas Piper",
+    "alt": "Hands of different generations meeting together",
+    "tags": [
+      "family",
+      "giving"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1761233976686-f43410a4f5d8?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "family.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "id": "dates-pot",
+    "source": "https://unsplash.com/photos/blue-and-gold-ceramic-bowl-HiENMowCYHg",
+    "photographer": "Abdullah Arif",
+    "alt": "Dates and a decorated ceramic pot",
+    "tags": [
+      "dates",
+      "giving"
+    ],
+    "focalPoint": "50% 70%",
+    "downloadUrl": "https://images.unsplash.com/photo-1587409059079-e1f9f840caa0?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "dates-pot.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "id": "river-stones",
+    "source": "https://unsplash.com/photos/river-in-forest-B5Rgr0AvnTg",
+    "photographer": "Jake Weirick",
+    "alt": "Flowing river water over dark forest stones",
+    "tags": [
+      "river",
+      "rain"
+    ],
+    "focalPoint": "50% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1567316106249-b2ecaeefdade?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "file": "river-stones.jpg",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 1750
+  },
+  {
+    "id": "wheat",
+    "source": "https://unsplash.com/photos/a-field-of-wheat-4RP0GbbcJ4Y",
+    "photographer": "Annie Spratt",
+    "alt": "Golden wheat growing in a field",
+    "tags": [
+      "harvest"
+    ],
+    "focalPoint": "50% 50%",
+    "file": "wheat.jpg",
+    "downloadUrl": "https://images.unsplash.com/photo-1659260859591-155fafb812bd?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 2100
+  },
+  {
+    "id": "bread",
+    "source": "https://unsplash.com/photos/a-close-up-of-bread-on-a-table-aajFDq9XugA",
+    "photographer": "Maria Petersson",
+    "alt": "Fresh sourdough loaves on a baking tray",
+    "tags": [
+      "giving",
+      "harvest"
+    ],
+    "focalPoint": "50% 60%",
+    "file": "bread.jpg",
+    "downloadUrl": "https://images.unsplash.com/photo-1590346328376-f21c8e5b630e?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 2100
+  },
+  {
+    "id": "writing-desk",
+    "file": "writing-desk.jpg",
+    "source": "https://unsplash.com/photos/a-person-writing-on-a-notebook-with-a-pen-6CQy1skIbRs",
+    "photographer": "nedimshoots",
+    "alt": "A hand recording notes with a pen on squared paper",
+    "tags": [
+      "writing"
+    ],
+    "focalPoint": "65% 38%",
+    "downloadUrl": "https://images.unsplash.com/photo-1731963094554-c5c981ccdefd?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "id": "notebook",
+    "file": "notebook.jpg",
+    "source": "https://unsplash.com/photos/a-person-holding-a-pen-and-writing-on-a-notebook-DcqO6JunP4g",
+    "photographer": "Kelly Sikkema",
+    "alt": "An open notebook and a pen held at a wooden desk",
+    "tags": [
+      "writing",
+      "books"
+    ],
+    "focalPoint": "62% 50%",
+    "downloadUrl": "https://images.unsplash.com/photo-1711843250836-5d3869042f3d?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "width": 1400,
+    "height": 933
+  }
+];

@@ -1,0 +1,166 @@
+/* Two complete reading directions, selected explicitly in Preferences. */
+.story-illustration,.saved-excerpt { display:none; }
+.appearance-picker { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0 12px; }
+.appearance-picker button { display:flex;flex-direction:column;align-items:flex-start;gap:7px;text-align:left;padding:15px;border:1px solid var(--line);border-radius:8px; }
+.appearance-picker button[aria-pressed=true] { border-color:var(--green);box-shadow:inset 0 0 0 1px var(--green); }
+.appearance-picker strong { font-size:15px;font-weight:500; }
+.appearance-picker small { font-size:11px;color:var(--muted);line-height:1.5; }
+.appearance-swatch { display:grid;place-items:center;width:100%;height:65px;margin-bottom:4px;border-radius:4px;font-size:28px; }
+.swatch-editorial { color:#263c32;background:#f8f8f2;font-family:'Source Serif 4',Georgia,serif;border:1px solid #dedfd6; }
+.swatch-immersive { color:#edf0e8;background:#193e35;font-family:var(--sans); }
+.editorial {
+ --bg:#f0f0e9; --surface:#fffef9; --text:#253a32; --muted:#69736a; --line:#dbded3;
+ --green:#345c49; --green-dark:#294938; --pale:#e5e9dd; --accent:#44664e;
+ --serif:'Source Serif 4',Georgia,serif;
+ color-scheme:light;
+}
+.editorial .topbar { border-bottom:0; }
+.editorial .sidebar { border-color:var(--line); }
+.editorial .nav-button.active { background:transparent;color:var(--text); }
+.editorial .nav-button.active:before { content:'';position:absolute;left:0;top:16px;bottom:16px;width:2px;background:var(--green); }
+.editorial .nav-button:hover { background:#ffffff65; }
+.editorial .search-trigger { background:transparent;border-color:var(--line); }
+.editorial .category-tabs { gap:30px; }
+.editorial .category-tab.active:after { height:1px; }
+.editorial .feed-scroll { border-radius:4px;background:var(--surface);outline:1px solid var(--line); }
+.editorial .feed-slide {
+ --card-text:#293d32; --card-muted:#6d766b; --card-line:#d7dccc;
+ background:var(--surface);padding:26px 36px;
+}
+.editorial .type-dua { --card-text:#4c4534;--card-muted:#7c7566;--card-line:#e0dccf;background:#fbfaf3; }
+.editorial .type-hadith { --card-text:#303d39;--card-muted:#6b756f;--card-line:#d7ddd5;background:#f8faf5; }
+.editorial .type-story { --card-text:#293d32;--card-muted:#6d766b;--card-line:#d7dccc;background:var(--surface); }
+.editorial .content-type { color:var(--card-muted);font-size:12px;gap:8px; }
+.editorial .content-type .icon { width:16px;height:16px; }
+.editorial .slide-source { color:var(--card-muted); }
+.editorial .slide-top { padding-bottom:10px;border-bottom:1px solid var(--card-line); }
+.editorial .slide-body { align-items:stretch;text-align:left;padding:32px 0; }
+.editorial .arabic { text-align:right;font-size:44px;line-height:1.95; }
+.editorial .translation { font-family:var(--serif);font-size:28px;line-height:1.55;letter-spacing:-.3px;max-width:none;margin-top:28px;text-wrap:pretty; }
+.editorial .translation-credit { color:var(--card-muted);font-size:11px;line-height:1.6;margin-top:20px; }
+.editorial .transliteration { margin-top:20px;font-size:14px; }
+.editorial .long-verse .arabic { font-size:37px; }
+.editorial .long-verse .translation { font-size:25px; }
+.editorial .flowing-verse .slide-body { padding:20px 6px 25px; }
+.editorial .flowing-verse .arabic { font-size:34px;line-height:2; }
+.editorial .flowing-verse .translation { font-size:24px;line-height:1.65; }
+.editorial .type-hadith .translation { font-size:28px; }
+.editorial .type-hadith.flowing-verse .translation { font-size:25px; }
+.editorial .type-story .slide-bg,.editorial .type-story .slide-shade { display:none; }
+.editorial .story-illustration { display:block;width:100%;height:145px;object-fit:cover;object-position:center 60%;margin-bottom:24px; }
+.editorial .story-title { font:500 34px/1.12 var(--serif);letter-spacing:-.7px; }
+.editorial .story-card .translation { font-size:24px;line-height:1.5;margin-top:20px; }
+.editorial .story-card .translation-credit { font-size:11px;margin-top:14px; }
+.editorial .read-story { font-size:13px;margin-top:8px; }
+.editorial .source-row { padding:10px 0; }
+.editorial .source-title { font-size:14px;font-weight:500; }
+.editorial .source-subtitle { font-size:11px; }
+.editorial .play-button { background:var(--card-text);color:var(--surface);border-color:var(--card-text); }
+.editorial .reciter { font-size:11px; }
+.editorial .audio-time { color:var(--card-muted); }
+.editorial .rail-circle { background:transparent; }
+.editorial .rail-action { color:var(--muted); }
+.editorial .rail-action.selected { color:var(--green); }
+.editorial .rail-action:hover .rail-circle { background:var(--pale); }
+.editorial .feed-arrow { border-color:var(--line); }
+.editorial .reading-context h2 { font:500 30px/1.15 var(--serif);letter-spacing:-.5px; }
+.editorial .context-primary { background:transparent;border:1px solid #bcc6b5;border-radius:4px; }
+.editorial .context-primary:hover { background:var(--pale); }
+.editorial .context-topics { margin-top:20px; }
+.editorial .context-topics button { min-height:36px;font-size:13px; }
+.editorial .context-source strong { font-size:12px; }
+.editorial .page-title { font:500 44px/1.15 var(--serif);letter-spacing:-1px; }
+.editorial .explore-hero { color:var(--text);background:transparent;border:1px solid var(--line);border-radius:4px;min-height:190px;padding:24px; }
+.editorial .explore-hero img { width:40%;left:60%;filter:saturate(.65); }
+.editorial .explore-hero:after { display:none; }
+.editorial .explore-hero h2 { font:500 32px/1.15 var(--serif);letter-spacing:-.7px;max-width:55%; }
+.editorial .explore-hero button { color:var(--green);font-size:13px; }
+.editorial .mood-grid { gap:0 24px; }
+.editorial .mood-tile { background:transparent;border:0;border-top:1px solid var(--line);border-radius:0;padding:22px 0; }
+.editorial .mood-tile h3 { font-family:var(--serif);font-weight:500; }
+.editorial .collection-card { border-radius:4px; }
+.editorial .collection-card h3 { font-family:var(--serif);font-size:18px;font-weight:500; }
+.editorial .saved-card { background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:4px;min-height:240px;padding:24px; }
+.editorial .saved-card:after,.editorial .saved-card img { display:none; }
+.editorial .saved-card>span { color:var(--muted); }
+.editorial .saved-card h3 { font-family:var(--serif);font-size:24px;font-weight:500; }
+.editorial .saved-card p { color:var(--muted); }
+.editorial .saved-card .saved-excerpt { display:block;font-family:var(--serif);font-size:17px;line-height:1.6;color:var(--text);margin:14px 0; }
+.editorial .note-card { border-radius:4px; }
+.editorial .note-card h3 { font-family:var(--serif); }
+.editorial .reader-cover { background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:10px 0 25px; }
+.editorial .reader-cover h1 { font:500 45px/1.2 var(--serif);letter-spacing:-.8px; }
+.editorial .reader-surah-arabic { right:0;top:24px;color:var(--text); }
+.editorial .reader-cover-bottom { margin-top:15px; }
+.editorial .reader-verses { border-radius:4px; }
+.editorial .reader-ayah.is-current { background:#f2f4eb;box-shadow:inset 2px 0 var(--green); }
+.editorial .reader-translation { font-family:var(--serif);font-size:19px;line-height:1.85;color:#4c5b4d; }
+.editorial .reader-options { background:transparent;border-radius:4px; }
+.editorial .reader-place { background:transparent;border:1px solid var(--line);border-radius:4px; }
+.editorial .reader-player { background:#fffef9f5;border-radius:6px;box-shadow:0 5px 25px #27372b12; }
+.editorial .practice-card { border-radius:4px; }
+.editorial .dialog-top h2 { font-family:var(--serif);font-weight:500; }
+.editorial .dialog-quote { font-family:var(--serif);line-height:1.6; }
+.editorial.large-text .arabic { font-size:49px; }
+.editorial.large-text .translation { font-size:31px; }
+.editorial.large-text .flowing-verse .arabic { font-size:39px; }
+.editorial.large-text .flowing-verse .translation { font-size:27px; }
+@media(max-width:1220px) {
+ .editorial .feed-slide { padding:24px 28px; }
+ .editorial .arabic { font-size:40px; }
+ .editorial .translation { font-size:26px; }
+ .editorial .reading-context h2 { font-size:27px; }
+}
+@media(max-width:600px) {
+ .editorial .category-tabs { gap:0; }
+ .editorial .topbar,.editorial .category-tabs { background:var(--surface); }
+ .editorial .feed-scroll { border-radius:0;outline:0; }
+ .editorial .feed-slide { padding:14px 22px 20px; }
+ .editorial .slide-top { padding-bottom:8px; }
+ .editorial .slide-body { padding:24px 0;margin-right:44px; }
+ .editorial .arabic { font-size:36px;line-height:2; }
+ .editorial .translation { font-size:25px;line-height:1.5;margin-top:24px; }
+ .editorial .translation-credit { font-size:11px;margin-top:18px; }
+ .editorial .transliteration { font-size:13px; }
+ .editorial .long-verse .arabic { font-size:31px; }
+ .editorial .long-verse .translation { font-size:23px; }
+ .editorial .flowing-verse .slide-body { padding:16px 5px 22px;margin:5px 39px 8px -5px; }
+ .editorial .flowing-verse .arabic { font-size:31px;line-height:2; }
+ .editorial .flowing-verse .translation { font-size:23px;line-height:1.65; }
+ .editorial .type-hadith .translation { font-size:25px; }
+ .editorial .type-hadith.flowing-verse .translation { font-size:23px; }
+ .editorial .story-title { font-size:32px; }
+ .editorial .story-card .translation { font-size:23px; }
+ .editorial .story-illustration { height:135px;margin-bottom:22px; }
+ .editorial .source-title { font-size:13px; }
+ .editorial .reciter { font-size:10px; }
+ .editorial .feed-container .feed-rail { color:var(--green); }
+ .editorial .feed-container .rail-circle { background:transparent; }
+ .editorial .feed-container .rail-action.selected { color:#24543b; }
+ .editorial .feed-container .rail-action:hover .rail-circle { background:#31563e0b; }
+ .editorial .mobile-nav { background:var(--surface); }
+ .editorial .mobile-nav button.active { color:var(--green); }
+ .editorial .page-title { font-size:38px; }
+ .editorial .explore-hero { margin:0;border-radius:4px;min-height:200px;padding:18px; }
+ .editorial .explore-hero h2 { font-size:29px; }
+ .editorial .explore-hero button { max-width:55%;text-align:left;font-size:12px; }
+ .editorial .saved-card { padding:18px; }
+ .editorial .saved-card h3 { font-size:22px; }
+ .editorial .saved-card .saved-excerpt { font-size:16px; }
+ .editorial .reader-cover { padding:8px 0 23px; }
+ .editorial .reader-cover h1 { font-size:37px; }
+ .editorial .reader-translation { font-size:18px; }
+ .editorial.large-text .arabic { font-size:41px; }
+ .editorial.large-text .translation { font-size:28px; }
+ .editorial.large-text .flowing-verse .arabic { font-size:36px; }
+ .editorial.large-text .flowing-verse .translation { font-size:25px; }
+ .appearance-picker { gap:10px; }
+ .appearance-picker button { padding:12px; }
+ .appearance-picker small { font-size:10px; }
+}
+@media(max-width:600px) and (max-height:740px) {
+ .editorial .feed-rail { bottom:145px; }
+}
+@media(max-width:600px) {
+ .editorial.focus-mode .feed-slide { padding-top:65px; }
+}
